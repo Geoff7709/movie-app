@@ -34,19 +34,25 @@
       // Initial array of movies
       var movies = ["The Matrix", "The Notebook", "Mr. Nobody", "The Lion King"];
 
+      var buttonsView = $('#buttons-view');
+      var userInput = $('#movie-input');
       // Function for displaying movie data
       function renderButtons() {
+        buttonsView.empty()
+        for (var i = 0; i < movies.length; i++) {
+        var button = $('<button>').text(movies[i]);
+        buttonsView.append(button);
 
-        // YOUR CODE GOES HERE
-
+        }
       }
 
       // This function handles events where one button is clicked
-      $("#add-movie").on("click", function() {
-
-        // YOUR CODE GOES HERE
-
-      });
+      $("#add-movie").on("click", function(event) {
+        event.preventDefault();
+        var newMovie = userInput.val()
+        movies.push(newMovie)
+        renderButtons()
+        });
 
       // Calling the renderButtons function to display the initial list of movies
       renderButtons();
